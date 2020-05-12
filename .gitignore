@@ -131,5 +131,5 @@ dmypy.json
 .idea/Python-Practice.iml
 .idea/inspectionProfiles/Project_Default.xml
 .idea/inspectionProfiles/profiles_settings.xml
-.idea\Python-Practice.iml
-.idea\.gitignore
+.idea/Python-Practice.iml
+.idea/.gitignore
