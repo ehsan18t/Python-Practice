@@ -18,9 +18,10 @@ import os
 import re
 import shutil
 import sys
+import time
+
 import win32api
 import win32con
-import time
 
 # Title
 os.system("TITLE Camtasia Patcher v1.0")
@@ -116,7 +117,7 @@ print(MC.RED + '*******************************************************\n'
 
 # Checking Data Directory
 print('=> Finding Installed Directory...')
-time.sleep(1)   # Adding 1s Delay
+time.sleep(1)  # Adding 1s Delay
 initial_path = ''
 test_path = ''
 for i in range(ord('A'), ord('Z') + 1):
@@ -138,11 +139,11 @@ else:
 
 # Specifying Camtasia REG DATA PATH
 print('=> Finding Program Data PATH...')
-time.sleep(1)   # Adding 1s Delay
-plist = []      # Declaring Array to list all the Dir inside initial_path's root
+time.sleep(1)  # Adding 1s Delay
+plist = []  # Declaring Array to list all the Dir inside initial_path's root
 for d in os.listdir(initial_path):
     if os.path.isdir(os.path.join(initial_path, d)):
-        plist.append(d)     # Adding Search Results to plist Array
+        plist.append(d)  # Adding Search Results to plist Array
 
 # Checking if Multiple Version of Camtasia Installed
 r = re.compile("Camtasia Studio.*")
@@ -195,7 +196,7 @@ path = initial_path + r'\ '.strip() + path_name
 
 # Checking If Already Patched or not
 print('=> Checking Program Status...')
-time.sleep(1)   # Adding 1s Delay
+time.sleep(1)  # Adding 1s Delay
 atr_file = 'RegInfo.ini'
 file_t = path + r'\ '.strip() + atr_file
 if os.path.isfile(file_t):
@@ -215,7 +216,7 @@ if os.path.isfile(file_t):
 
 # Remove file if already exist
 print('=> Patching ' + path_name + '...')
-time.sleep(1)   # Adding 1s Delay
+time.sleep(1)  # Adding 1s Delay
 atr_file = 'RegInfo.ini'
 file_t = path + r'\ '.strip() + atr_file
 if os.path.isfile(file_t):
