@@ -1,8 +1,8 @@
-# CAMTASIA CRACK SCRIPT V1.01
+# CAMTASIA CRACK SCRIPT V1.02
 # AUTHOR: Ahsan40 / Ahsan400
 # CREATED ON: 2017
 # INITIAL RELEASE: 12 May 2020
-# LAST UPDATED: 24 May 2020
+# LAST UPDATED: 30 May 2020
 # TARGETED PYTHON: 3.7, 3.8, 3.9 and newer
 # TARGETED OS: All Windows with python installed
 # WORKS ON: Camtasia 2019.0.10 and all previous version
@@ -24,7 +24,7 @@ import win32api
 import win32con
 
 # Title
-os.system("TITLE Camtasia Patcher v1.01")
+os.system("TITLE Camtasia Patcher v1.02")
 
 # Window Size
 os.system("mode con:cols=55 lines=17")
@@ -71,7 +71,7 @@ hide_cursor()
 # Color Classes
 # Only Works in Windows
 # REF: https://www.geeksforgeeks.org/print-colors-python-terminal/
-# MC Stands for 'My Colors
+# 'MC' stands for 'My Colors'
 class MC:
     BOLD = '\033[1m'
     UNDERLINE = '\033[4m'
@@ -169,7 +169,12 @@ if path_list_len >= 1:  # Checking if list has at least one value
         for p in range(path_list_len):  # This loop with repeat (path_list_len) times
             list_line_number += 1  # Starting count from 1 and will increase with every repeat
             path_name_temp = (path_name_list[p])  # Storing path name temporarily ('p' is counter of this loop)
-            print('        ' + str(list_line_number) + '. ' + path_name_temp)  # Printing installed Programs
+            program_number = path_name_temp[-2:]    # Storing last 2 index of 'path_name_temp'
+            if program_number.isdigit():    # Checking if last 2 index are digit or not
+                program_name = 'Camtasia Studio 20' + program_number    # if they are digit add 20 before them
+            else:
+                program_name = 'Camtasia Studio' + program_number       # if they aren't digit don't add anything
+            print('        ' + str(list_line_number) + '. ' + program_name)  # Printing installed Programs
         while True:
             try:
                 show_cursor()  # Enabling cursor to take user input
@@ -216,9 +221,16 @@ if os.path.isfile(reg_file_address):  # Checking if file exist
         input(MC.PUR_W + '                 Press enter to exit                   ' + MC.END)
         sys.exit(0)
 
-# Removing 'RegInfo.ini' file if already exist
-print('=> Patching ' + path_name + '...')
+# Printing Patch Status
+program_number = path_name[-2:]     # Storing last 2 index of 'path_name'
+if program_number.isdigit():        # Checking if last 2 index are digit or not
+    program_name = 'Camtasia Studio 20' + program_number    # if they are digit add 20 before them
+else:
+    program_name = 'Camtasia Studio' + program_number       # if they aren't digit don't add anything
+print('=> Patching ' + program_name + '...')
 time.sleep(1)  # Adding 1s Delay
+
+# Removing 'RegInfo.ini' file if already exist
 if os.path.isfile(reg_file_address):  # Checking if 'RegInfo.ini' file is already exist at 'reg_file_address'
     win32api.SetFileAttributes(reg_file_address, win32con.FILE_ATTRIBUTE_NORMAL)  # Changing file attribute to normal
     os.remove(reg_file_address)  # Removing file
